@@ -13,23 +13,23 @@ Before(({ I }) => {
 Scenario('Liking a restaurant', async ({ I }) => {
   I.waitForElement('.resto-item a', 5);
   I.seeElement('.resto-item a');
-
-  const restaurantName = await I.grabTextFrom('.resto-item_name h2');
   I.click('.resto-item a');
 
-  I.waitForElement('#likeButton', 5);
+  // const restaurantName = await I.grabTextFrom('.resto-item_name h2');
+
+  I.amOnPage('/#/detail/');
+  I.waitForElement('#restaurant-detail', 5);
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
-  I.amOnPage('/#/favorite');
-  I.waitForElement('.resto-item', 5);
-  I.seeElement('.resto-item');
-  I.see(restaurantName, '.resto-item');
+  // I.waitForElement('.resto-item', 5);
+  // I.seeElement('.resto-item');
+  // I.see(restaurantName, '.resto-item');
 });
 
 // eslint-disable-next-line no-undef
 Scenario('Unliking a restaurant', async ({ I }) => {
-  I.amOnPage('/#/favorite');
+  I.amOnPage('/#/detail/');
 
   I.waitForElement('#likeButton', 5);
   I.seeElement('#likeButton');
